@@ -1,0 +1,8 @@
+include LICENSE
+include README.rst
+recursive-include svnlab/common *
+recursive-include docs *
+prune migrations
+prune */migrations
+prune */*/migrations
+prune */*/*/migrations
