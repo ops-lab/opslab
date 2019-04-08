@@ -13,14 +13,19 @@ Quick start
 
     git clone https://github.com/jiuchou/svnlab.git -b develop
 
-2. Replace the following file contents with valid file contents::
+2. Change configuration::
 
-    # auth file for svn
-    svnlab/svnlab/common/roleUtils/dav_svn.authz
-    # manager, url
-    svnlab/svnlab/common/roleUtils/managerToUrl
-    # module, prefixUrl
-    svnlab/svnlab/common/roleUtils/prefixUrl
+    Update Ldap configuration:
+        svnlab.user.management
+
+    Replace the following file contents with valid file contents::
+
+            # auth file for svn
+            svnlab/svnlab/common/roleUtils/dav_svn.authz
+            # manager, url
+            svnlab/svnlab/common/roleUtils/managerToUrl
+            # module, prefixUrl
+            svnlab/svnlab/common/roleUtils/prefixUrl
 
 3. Create Database in MySQL Database::
 
