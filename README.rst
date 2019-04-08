@@ -32,6 +32,9 @@ Quick start
 
 5. Run `python manage.py makemigrations` to create the app migrations::
 
+    Modify svnlab.setting:
+        Change default database host "127.0.0.1" to wanted database host, such as "10.6.5.100"
+
     python manage.py makemigrations user
     python manage.py makemigrations svn
 

@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SUB_DIR = os.path.basename(os.path.dirname(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -52,7 +53,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'svnlab.urls'
+# ROOT_URLCONF = 'svnlab.urls'
+ROOT_URLCONF = '{}.urls'.format(SUB_DIR)
 
 TEMPLATES = [
     {
@@ -70,7 +72,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'svnlab.wsgi.application'
+# WSGI_APPLICATION = 'svnlab.wsgi.application'
+WSGI_APPLICATION = '{}.wsgi.application'.format(SUB_DIR)
 
 
 # Database
@@ -78,11 +81,35 @@ WSGI_APPLICATION = 'svnlab.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'svnlab',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    },
+    'svninfo': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'svninfo',
+        'USER': 'root',
+        'PASSWORD': 'mysql123',
+        'HOST': '10.6.5.116',
+        'PORT': '3306',
     }
 }
 
+DATABASE_APPS_MAPPING = {
+    # example:
+    #   'app_name': 'database_name'
+    #   'user': 'default',
+    'svninfo': 'svninfo',
+}
+
+DATABASE_ROUTERS = [
+    '{}.database_app_router.DatabaseAppsRouter'.format(SUB_DIR)
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
