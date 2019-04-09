@@ -1,6 +1,6 @@
 """
 permission.views
-~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 This module implements the Requests Views.
 View is an logical management library, written in Python, for permission beings.

@@ -31,6 +31,13 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+PLUGIN_APPS = [
+    'autosolution',
+    'common',
+    'user',
+    'permission',
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,10 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'common',
-    'user',
-    'permission',
-]
+] + PLUGIN_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -88,7 +92,7 @@ DATABASES = {
         'NAME': 'svnlab',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
+        'HOST': '10.6.5.100',
         'PORT': '3306',
     },
     'svninfo': {
@@ -98,6 +102,14 @@ DATABASES = {
         'PASSWORD': 'mysql123',
         'HOST': '10.6.5.116',
         'PORT': '3306',
+    },
+    'auto_solution': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'auto_solution',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '10.6.5.100',
+        'PORT': '3306',
     }
 }
 
@@ -106,6 +118,7 @@ DATABASE_APPS_MAPPING = {
     #   'app_name': 'database_name'
     #   'user': 'default',
     'svninfo': 'svninfo',
+    'auto_solution': 'auto_solution',
 }
 
 DATABASE_ROUTERS = [

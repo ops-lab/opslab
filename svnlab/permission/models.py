@@ -1,6 +1,6 @@
 """
-user.models
-~~~~~~~~~~~
+permission.models
+~~~~~~~~~~~~~~~~~
 
 This module implements the Requests Models.
 
