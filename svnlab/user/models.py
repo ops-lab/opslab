@@ -6,29 +6,16 @@ This module implements the Requests Models.
 
 :copyright: (c) 2019 by jiuchou.
 :license: MIT, see LICENSE for more details.
-:updateTime: 2019.01.15
+:updateTime: 2019.04.09
 """
 from django.db import models
 from django.utils import timezone
 
 
 class UserInfo(models.Model):
-    """
-        state: {
-            token: getToken(),
-            avatar: "",
-            userInfo: {
-                username: "guster",
-                truename: "",
-                sex: "male",
-                email: "xxx@dahuatech.com",
-                introduction: "",
-                avatar: ""
-            }
-        }
+    """docstring
     """
     username = models.CharField(max_length=64, unique=True)
-    password = models.CharField(max_length=64)
     truename = models.CharField(max_length=64)
     sex = models.CharField(verbose_name="sex",
                            max_length=5,

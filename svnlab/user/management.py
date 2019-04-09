@@ -93,25 +93,22 @@ class CustomLdap(object):
         1.获取用户基础信息
         2.解析用户权限，存放至数据库
         """
-        response = {}
-        result, user_info = self.ldap_search(username)
-        user_info = json.dumps(str(user_info[0][0]), ensure_ascii=False)
-        print(user_info)
-        truename = user_info.split(",")[0].split("=")[1]
-        response = {
+        user_info = {}
+        result, user_infos = self.ldap_search(username)
+        user_infos = json.dumps(str(user_infos[0][0]), ensure_ascii=False)
+        print(user_infos)
+        truename = user_infos.split(",")[0].split("=")[1]
+        user_info = {
             'username': username,
-            'roles': "guster",
             'truename': truename,
             'sex': "",
             'email': "",
             'telephone': "",
             'introduction': "",
-            'profile_photos': "",
-            'join_time': "",
-            'login_time': ""
+            'profile_photos': ""
         }
 
-        return response
+        return user_info
 
 
 def get_token(username):

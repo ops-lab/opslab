@@ -14,15 +14,24 @@ import os
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import JsonResponse
+from rest_framework.exceptions import APIException
 from rest_framework.views import APIView
 
-from svnlab.svnlab import settings
 from svnlab.user.management import CustomLdap, get_token
+from svnlab.user.models import UserInfo
 
 
 class UserLoginView(APIView):
     """View of user login operation.
     """
+
+    def update_user_info(self, user_info):
+        try:
+            UserInfo.objects.update_or_create(username=username,
+                                              defaults=user_info)
+        except Exception as e:
+            raise APIException(
+                "ERROR: Update or create user information failed.")
 
     def post(self, request):
         """User Login by LDAP server
@@ -34,6 +43,7 @@ class UserLoginView(APIView):
         try:
             custom_ldap = CustomLdap(username, password)
             user_info = custom_ldap.get_user_info(username)
+            update_user_info(user_info)
             token = get_token(username)
             response['token'] = token
             response['user_info'] = user_info

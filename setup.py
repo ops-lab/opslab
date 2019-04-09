@@ -1,8 +1,8 @@
 """
 setup.py for svnlab
 """
-
 import os
+import re
 from setuptools import find_packages, setup
 
 # Document:
@@ -34,7 +34,7 @@ requires = [
     'djangorestframework>=3.9.0',
     'mysqlclient>=1.3.14',
     'Pillow>=5.4.1',
-    # 'docutils>=0.3',
+    'docutils>=0.3',
     'python-ldap>=3.1.0',
 ]
 
