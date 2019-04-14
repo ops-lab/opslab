@@ -12,7 +12,7 @@ Requests is an HTTP library, written in Python, for user beings. Basic GET and P
 
 from django.urls import path
 
-from svnlab.permission import views as permission_views
+from permission import views as permission_views
 
 urlpatterns = [
     path("permission-list", permission_views.PermissionView.as_view()),

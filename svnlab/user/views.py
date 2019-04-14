@@ -17,8 +17,8 @@ from django.http import JsonResponse
 from rest_framework.exceptions import APIException
 from rest_framework.views import APIView
 
-from svnlab.user.management import CustomLdap, get_token
-from svnlab.user.models import UserInfo
+from user.management import CustomLdap, get_token
+from user.models import UserInfo
 
 
 class UserLoginView(APIView):

@@ -15,13 +15,13 @@ import time
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import JsonResponse
-
 from rest_framework.exceptions import APIException
 from rest_framework.views import APIView
-from svnlab.permission.models import (PermissionDeveloper, PermissionOwner,
-                                      PermissionReport)
-from svnlab.svnlab import settings
-from svnlab.user.management import get_username
+
+from permission.models import (PermissionDeveloper, PermissionOwner,
+                               PermissionReport)
+from svnlab import settings
+from user.management import get_username
 
 
 class PermissionView(APIView):
@@ -58,7 +58,7 @@ class PermissionView(APIView):
             raise APIException("ERROR: Get permissions from database failed!")
         return permissions
 
-    def _get_permission_list(self, username, role, limit, page):
+    def _get_permission_list(self, role, limit, page):
         permission_list = []
         total = 0
 
@@ -101,15 +101,14 @@ class PermissionView(APIView):
         page = req['page']
         role = req['role']
         try:
-            permission_list, total = _get_permission_list(
-                username, role, limit, page)
+            permission_list, total = _get_permission_list(role, limit, page)
         except Exception as e:
             response['message'] = "ERROR: Get permission list information failed!"
             response['status_code'] = 500
             return JsonResponse(response)
 
         response['permission_list'] = permission_list
-        response['message] = "SUCCESS: Get permission list information successful!"
+        response['message'] = "SUCCESS: Get permission list information successful!"
         response['status_code'] = 200
         return JsonResponse(response)
 
@@ -266,7 +265,7 @@ class PermissionView(APIView):
             response['status_code'] = 500
             return JsonResponse(response)
 
-        response['message] = "SUCCESS: Update permission list information to database successful!"
+        response['message'] = "SUCCESS: Update permission list information to database successful!"
         response['status_code'] = 200
         return JsonResponse(response)
 

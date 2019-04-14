@@ -12,8 +12,8 @@ Requests is an HTTP library, written in Python, for user beings. Basic GET and P
 
 from django.urls import path
 
-from svnlab.autosolution import views as autosolution_views
+from autosolution import views as autosolution_views
 
 urlpatterns = [
-    path("update-caselib", autosolution_views.update_caselib),
+    path("case", autosolution_views.AutoSolutionView.as_view()),
 ]

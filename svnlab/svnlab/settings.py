@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -92,23 +92,15 @@ DATABASES = {
         'NAME': 'svnlab',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '10.6.5.100',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     },
-    'svninfo': {
+    'autosolution': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'svninfo',
-        'USER': 'root',
-        'PASSWORD': 'mysql123',
-        'HOST': '10.6.5.116',
-        'PORT': '3306',
-    },
-    'auto_solution': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'auto_solution',
+        'NAME': 'autosolution',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '10.6.5.100',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
@@ -117,8 +109,7 @@ DATABASE_APPS_MAPPING = {
     # example:
     #   'app_name': 'database_name'
     #   'user': 'default',
-    'svninfo': 'svninfo',
-    'auto_solution': 'auto_solution',
+    'autosolution': 'autosolution',
 }
 
 DATABASE_ROUTERS = [

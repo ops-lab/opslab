@@ -14,7 +14,7 @@ from django.db import models
 class CaseLib(models.Model):
     """知识库：用于自助解决方案工具
     """
-    id = models.IntegerField(blank=True, null=True)
+    id = models.IntegerField(primary_key=True, blank=True)
     case_key = models.CharField(max_length=512, blank=True, null=True)
     case_info = models.CharField(max_length=512, blank=True, null=True)
     case_type = models.CharField(max_length=512, blank=True, null=True)
@@ -27,4 +27,3 @@ class CaseLib(models.Model):
         """
         managed = True
         db_table = "case_lib"
-        db_table = "auto_solution"
