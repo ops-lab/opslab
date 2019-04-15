@@ -36,6 +36,7 @@ requires = [
     'Pillow>=5.4.1',
     'docutils>=0.3',
     'python-ldap>=3.1.0',
+    'pyjwt>=1.7.1',
 ]
 
 # setuptools [1]
