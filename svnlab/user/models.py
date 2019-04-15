@@ -22,13 +22,13 @@ class UserInfo(models.Model):
                            choices=(("male", "male"), ("female", "female")),
                            default="male")
     email = models.EmailField()
-    telephone = models.CharField(max_length=64, unique=True)
     introduction = models.CharField(max_length=512)
-    profile_photos_height = models.PositiveIntegerField(default=75)
-    profile_photos_width = models.PositiveIntegerField(default=75)
-    profile_photos = models.ImageField(upload_to="profile_photos",
-                                       height_field="profile_photos_height",
-                                       width_field="profile_photos_width")
+    avatar_height = models.PositiveIntegerField(default=40, null=True)
+    avatar_width = models.PositiveIntegerField(default=40, null=True)
+    avatar = models.ImageField(upload_to="avatar",
+                               height_field="avatar_height",
+                               width_field="avatar_width",
+                               null=True)
     join_time = models.DateTimeField("加入时间", default=timezone.now)
     login_time = models.DateTimeField("最后登录时间", auto_now=True)
 
@@ -36,3 +36,14 @@ class UserInfo(models.Model):
     # python2: def __unicode__
     def __str__(self):
         return self.username
+
+    class Meta:
+        """docstring
+        """
+        managed = True
+        db_table = "user_info"
+        # 一个字符串的列表或元组, 每个字符串是一个字段名
+        #   前面带有可选的"-"前缀表示倒序
+        #   前面没有"-"的字段表示正序
+        #   使用"?"来表示随机排序
+        ordering = ["-username"]

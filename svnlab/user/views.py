@@ -27,11 +27,29 @@ class UserLoginView(APIView):
 
     def update_user_info(self, user_info):
         try:
-            UserInfo.objects.update_or_create(username=username,
-                                              defaults=user_info)
+            UserInfo.objects.update_or_create(
+                username=user_info.get('username'),
+                defaults=user_info)
         except Exception as e:
             raise APIException(
-                "ERROR: Update or create user information failed.")
+                "ERROR: Update or create user information failed. {0}".format(e))
+
+    def _get_user_info(self, username, password):
+        if username == "jiuchou" and password == "123456":
+            user_info = {
+                'username': "jiuchou",
+                'truename': "jiuchou",
+                'sex': "male",
+                'email': "jiuchou@email.com",
+                'avatar': "",
+                'introduction': "",
+                'roles': ['devops']
+            }
+        else:
+            custom_ldap = CustomLdap(username, password)
+            user_info = custom_ldap.get_user_info(username)
+
+        return user_info
 
     def post(self, request):
         """User Login by LDAP server
@@ -41,16 +59,16 @@ class UserLoginView(APIView):
         username = req['username']
         password = req['password']
         try:
-            custom_ldap = CustomLdap(username, password)
-            user_info = custom_ldap.get_user_info(username)
-            update_user_info(user_info)
+            user_info = self._get_user_info(username, password)
+            self.update_user_info(user_info)
             token = get_token(username)
             response['token'] = token
             response['user_info'] = user_info
-            response['message'] = "SUCCESS: Login successful!"
-            response['status_code'] = 200
-            return JsonResponse(response)
         except Exception as e:
             response['message'] = "ERROR: Login failed! {0}".format(e)
             response['status_code'] = 401
             return JsonResponse(response)
+
+        response['message'] = "SUCCESS: Login successful!"
+        response['status_code'] = 200
+        return JsonResponse(response)

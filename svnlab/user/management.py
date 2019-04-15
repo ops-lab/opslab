@@ -8,7 +8,9 @@ This module implements the custom operation of LDAP server.
 :license: MIT, see LICENSE for more details.
 :updateTime: 2019.04.09
 """
+import datetime
 import json
+import jwt
 import ldap
 import os
 
@@ -95,17 +97,15 @@ class CustomLdap(object):
         """
         user_info = {}
         result, user_infos = self.ldap_search(username)
-        user_infos = json.dumps(str(user_infos[0][0]), ensure_ascii=False)
-        print(user_infos)
-        truename = user_infos.split(",")[0].split("=")[1]
+        truename = user_infos[0][0].split(",")[0].split("=")[1]
         user_info = {
             'username': username,
             'truename': truename,
             'sex': "",
             'email': "",
-            'telephone': "",
+            'avatar': "",
             'introduction': "",
-            'profile_photos': ""
+            'roles': ['developer']
         }
 
         return user_info
