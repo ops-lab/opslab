@@ -105,7 +105,7 @@ class CustomLdap(object):
             'email': "",
             'avatar': "",
             'introduction': "",
-            'roles': ['developer']
+            'roles': "developer"
         }
 
         return user_info

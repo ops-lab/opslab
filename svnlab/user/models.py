@@ -19,7 +19,7 @@ class UserInfo(models.Model):
     truename = models.CharField(max_length=64)
     sex = models.CharField(verbose_name="sex",
                            max_length=5,
-                           choices=(("male", "male"), ("female", "female")),
+                           choices=(("male", "男"), ("female", "女")),
                            default="male")
     email = models.EmailField()
     introduction = models.CharField(max_length=512)
@@ -29,6 +29,7 @@ class UserInfo(models.Model):
                                height_field="avatar_height",
                                width_field="avatar_width",
                                null=True)
+    roles = models.CharField(max_length=64)
     join_time = models.DateTimeField("加入时间", default=timezone.now)
     login_time = models.DateTimeField("最后登录时间", auto_now=True)
 

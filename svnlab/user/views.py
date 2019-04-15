@@ -35,16 +35,20 @@ class UserLoginView(APIView):
                 "ERROR: Update or create user information failed. {0}".format(e))
 
     def _get_user_info(self, username, password):
-        if username == "jiuchou" and password == "123456":
-            user_info = {
-                'username': "jiuchou",
-                'truename': "jiuchou",
-                'sex': "male",
-                'email': "jiuchou@email.com",
-                'avatar': "",
-                'introduction': "",
-                'roles': ['devops']
-            }
+        if username == "devops":
+            if password == "123456":
+                user_info = {
+                    'username': "devops",
+                    'truename': "jiuchou",
+                    'sex': "male",
+                    'email': "jiuchou@email.com",
+                    'avatar': "",
+                    'introduction': "",
+                    'roles': "devops"
+                }
+            else:
+                raise APIException(
+                    "ERROR: User password failed.")
         else:
             custom_ldap = CustomLdap(username, password)
             user_info = custom_ldap.get_user_info(username)
