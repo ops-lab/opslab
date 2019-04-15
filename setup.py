@@ -30,7 +30,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 # 第三方依赖包及版本
 requires = [
     'django>=2.0.9',
-    # 'django-cors-headers>=2.4.0',
+    'django-cors-headers>=2.4.0',
     'djangorestframework>=3.9.0',
     'mysqlclient>=1.3.14',
     'Pillow>=5.4.1',
