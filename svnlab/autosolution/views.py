@@ -33,13 +33,23 @@ class AutoSolutionView(APIView):
         try:
             for case_list in req:
                 print(case_list)
-                CaseLib.objects.create(
+                case_info = {
+                    'case_key': case_list.get('case_key'),
+                    'case_info': case_list.get('case_info'),
+                    'case_info': case_list.get('case_info'),
+                    'case_type': case_list.get('case_type'),
+                    'case_description': case_list.get('case_description'),
+                    'case_solution': case_list.get('case_solution'),
+                    'case_remark': case_list.get('case_remark')
+                }
+                CaseLib.objects.update_or_create(
                     case_key=case_list.get('case_key'),
                     case_info=case_list.get('case_info'),
                     case_type=case_list.get('case_type'),
                     case_description=case_list.get('case_description'),
                     case_solution=case_list.get('case_solution'),
-                    case_remark=case_list.get('case_remark'))
+                    case_remark=case_list.get('case_remark'),
+                    defaults=case_info)
         except Exception as e:
             response['message'] = "ERROR: Update caselib information to database failed!"
             response['status_code'] = 500
