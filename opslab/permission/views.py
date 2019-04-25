@@ -20,7 +20,7 @@ from rest_framework.views import APIView
 
 from permission.models import (PermissionDeveloper, PermissionOwner,
                                PermissionReport)
-from svnlab import settings
+from opslab import settings
 from user.management import get_username
 
 
@@ -277,7 +277,7 @@ def update_permission(request):
     """
     response = {}
     timestamp = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
-    identifier = 'svnlab{}'.format(timestamp)
+    identifier = 'opslab{}'.format(timestamp)
     token = request.META.get('HTTP_AUTHORIZATION')
     try:
         applicant = get_username(token)

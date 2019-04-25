@@ -1,41 +1,41 @@
 ======
-SvnLab
+opslab
 ======
 
-SvnLab is a simple Django app to manage svn server. 
+opslab is a simple Django app to manage svn server. 
 
 Detailed documentation is in the "docs" directory.
 
 Quick start
 -----------
 
-1. Get svnlab::
+1. Get opslab::
 
-    git clone https://github.com/ops-lab/tools-management-platform.git
+    git clone https://github.com/ops-lab/opslab.git
 
 2. Change configuration::
 
     Update Ldap configuration:
-        svnlab.user.management
+        opslab.user.management
 
     Replace the following file contents with valid file contents::
 
             # auth file for svn
-            svnlab/svnlab/common/roleUtils/dav_svn.authz
+            opslab/opslab/common/statics/dav_svn.authz
             # manager, url
-            svnlab/svnlab/common/roleUtils/managerToUrl
-            # module, prefixUrl
-            svnlab/svnlab/common/roleUtils/prefixUrl
+            opslab/opslab/common/statics/owner_url_map
+            # module, preurl
+            opslab/opslab/common/statics/module_preurl_map
 
 3. Create Database in MySQL Database::
 
-    CREATE DATABASE svnlab DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+    CREATE DATABASE opslab DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-4. Install svnlab as a library for Python::
+4. Install opslab as a library for Python::
 
     make install
 
-5. Modify svnlab.setting::
+5. Modify opslab.setting::
 
     Change default database host "127.0.0.1" to wanted database host
 
@@ -52,14 +52,14 @@ Quick start
 
 7. Prepare frontend static file(directory is dist/)::
 
-    mkdir -p $python_site_packages/svnlab/frontend/
-    cp -rf dist/* $python_site_packages/svnlab/frontend/
+    mkdir -p $python_site_packages/opslab/frontend/
+    cp -rf dist/* $python_site_packages/opslab/frontend/
 
-8. Run svnlab::
+8. Run opslab::
 
-    python3.7 manage.py runserver 0.0.0.0:8888
+    python3.7 manage.py runserver 0.0.0.0:8000
 
-9. Start use or develop svnlab.
+9. Start use or develop opslab.
 
 Quick Develop
 -------------
@@ -79,7 +79,7 @@ Quick Develop
 
 4. Run `python manage.py migrate user` to create the user models.
 
-5. Add frontend static file to svnlab/frontend. And start the development 
+5. Add frontend static file to opslab/frontend. And start the development 
    server that run `python manage.py runserver 0.0.0.0:8000`.
 
 6. Visit http://127.0.0.1:8000/ to participate in the user.

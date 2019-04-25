@@ -7,7 +7,7 @@
 \____/    \_/   |_|  \ _| |______ \__,__/ bbbbb
 """
 
-__title__ = 'svnlab'
+__title__ = 'opslab'
 __version__ = '1.0.0'
 
 # Version synonym

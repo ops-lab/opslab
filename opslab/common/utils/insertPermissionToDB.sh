@@ -4,7 +4,7 @@ HOST="127.0.0.1"
 PORT="3306"
 USERNAME="root"
 PASSWORD="root"
-DATABASENAME="svnlab"
+DATABASENAME="opslab"
 userRoleTableName="user_role"
 
 currentPath=$(cd $(dirname $0); pwd -P)

@@ -124,8 +124,8 @@ def get_token(username):
     For example:
         >>> token = jwt.encode(
                 {
-                    'iss': "svnlab",
-                    'sub': "svnlab-frontend",
+                    'iss': "opslab",
+                    'sub': "opslab-console",
                     'usernmae': "jiuchou",
                     'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=10),
                     'iat': datetime.datetime.utcnow()
@@ -136,8 +136,8 @@ def get_token(username):
         >>> print(token)
     """
     playload = {
-        'iss': "svnlab",
-        'sub': "svnlab-frontend",
+        'iss': "opslab",
+        'sub': "opslab-console",
         'usernmae': username,
         'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1),
         'iat': datetime.datetime.utcnow()

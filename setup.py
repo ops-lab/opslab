@@ -1,5 +1,5 @@
 """
-setup.py for svnlab
+setup.py for opslab
 """
 import os
 import re
@@ -19,7 +19,7 @@ def get_version(package):
     return re.search("__version__ = ['\"]([^'\"]+)['\"]", init_py).group(1)
 
 
-version = get_version('svnlab')
+version = get_version('opslab')
 
 with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
     README = readme.read()
@@ -41,17 +41,17 @@ requires = [
 
 # setuptools [1]
 setup(
-    name='svnlab',
+    name='opslab',
     version=version,
     packages=find_packages(),
-    # package_dir = {'': 'svnlab'}
+    # package_dir = {'': 'opslab'}
     # scripts 参数是一个 list，安装包时在该参数中列出的文件会被安装到系统 PATH 路径下
-    # scripts=['svnlab/manage.py'],
+    # scripts=['opslab/manage.py'],
 
     # entry_points 参数用来支持自动生成脚本，其值应该为是一个字典，从 entry_point 组名映射到一个表
     # 示 entry_point 的字符串或字符串列表 [3]
     # entry_points = {'console_scripts': [
-    #     'svnlab-manage = svnlab.manage:main',
+    #     'opslab-manage = opslab.manage:main',
     # ]},
 
     # Project uses reStructuredText, so ensure that the docutils get
@@ -79,10 +79,10 @@ setup(
     # ],
 
     license='MIT License',
-    keywords="svnlab",
+    keywords="opslab",
     description='A simple Django app to manage svn server.',
     long_description=README,
-    url='https://github.com/jiuchou/svnlab',
+    url='https://github.com/ops-lab/opslab',
     author="jiuchou",
     author_email='315675275@qq.com',
     classifiers=[
@@ -100,8 +100,8 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     project_urls={
-        "Bug Tracker": "https://github.com/jiuchou/svnlab/issues",
-        "Documentation": "https://github.com/jiuchou/svnlab/wiki",
-        "Source Code": "https://github.com/jiuchou/svnlab",
+        "Bug Tracker": "https://github.com/ops-lab/opslab/issues",
+        "Documentation": "https://github.com/ops-lab/opslab/wiki",
+        "Source Code": "https://github.com/ops-lab/opslab",
     }
 )
