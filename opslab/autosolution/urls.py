@@ -16,4 +16,5 @@ from autosolution import views as autosolution_views
 
 urlpatterns = [
     path("case", autosolution_views.AutoSolutionView.as_view()),
+    path("tools", autosolution_views.trigger_autosolution),
 ]
