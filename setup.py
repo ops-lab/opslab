@@ -37,6 +37,10 @@ requires = [
     'docutils>=0.3',
     'python-ldap>=3.1.0',
     'pyjwt>=1.7.1',
+    'suds-jurko>=0.6',
+    'psycopg2-binary>=2.8.3',
+    'pymssql>=2.1.4',
+    'django-crontab',
 ]
 
 # setuptools [1]
