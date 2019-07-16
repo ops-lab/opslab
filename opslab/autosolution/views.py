@@ -16,6 +16,7 @@ from django.http import JsonResponse
 from rest_framework.exceptions import APIException
 from rest_framework.views import APIView
 
+from autosolution.jenkins_api import trigger_job
 from autosolution.models import CaseLib
 
 
@@ -110,3 +111,28 @@ class AutoSolutionView(APIView):
         response['message'] = "SUCCESS: Get case list information successful!"
         response['status_code'] = 200
         return JsonResponse(response)
+
+def trigger_autosolution(request):
+    """docString
+    """
+    response = {}
+
+    req = json.loads(request.body.decode())
+    print(req)
+    try:
+        build_url = req.get('build_url')
+        receivers = req.get('receivers')
+        stage = req.get('stage')
+        mode = req.get('mode')
+        print(build_url)
+        print(receivers)
+        trigger_job(build_url, receivers, stage, mode)
+    except Exception as e:
+        response['message'] = "ERROR: Trigger autosolution failed! {0}".format(e)
+        response['status_code'] = 500
+        return JsonResponse(response)
+
+    response['message'] = "SUCCESS: Trigger autosolution successful!"
+    response['status_code'] = 200
+    return JsonResponse(response)
+    
