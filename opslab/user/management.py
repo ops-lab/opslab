@@ -90,6 +90,22 @@ class CustomLdap(object):
             raise APIException(e)
         return True, user_data
 
+    def _check_admin_role(self, username):
+        admin = "jiuchou"
+        admin = admin.split(',')
+        if username in admin:
+            return True
+        else:
+            return False
+
+    def _check_devops_role(self, username):
+        devops = "jiuchou,xxxxx"
+        devops = devops.split(',')
+        if username in devops:
+            return True
+        else:
+            return False
+
     def get_user_info(self, username):
         """
         1.获取用户基础信息
@@ -107,6 +123,11 @@ class CustomLdap(object):
             'introduction': "",
             'roles': "developer"
         }
+
+        if self._check_admin_role(username):
+            user_info['roles'] = user_info['roles'] + ",admin"
+        if self._check_devops_role(username):
+            user_info['roles'] = user_info['roles'] + ",devops"
 
         return user_info
 

@@ -36,7 +36,7 @@ PLUGIN_APPS = [
     'common',
     'user',
     'permission',
-    'coveritytool',
+    'jenkinstool',
 ]
 
 INSTALLED_APPS = [
@@ -163,3 +163,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "frontend/static"),
 ]
+
+# crontab job
+CRONJOBS = [
+    ('0 0,12 * * *', 'jenkinstool.cron.cron_jiuchou', ' >> /tmp/cron_jiuchou'),
+]
+
